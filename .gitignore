@@ -1,3 +1,5 @@
 random/*
-piano_transcription
+piano_transcription_inference
 *.swp
+test.py
+__pycache__
