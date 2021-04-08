@@ -10,7 +10,7 @@ def read_path(path):
   song_list = []
   for (_, _, filenames) in os.walk(path):
     for file in filenames:
-      ret.append(file.split(".")[0])
+      ret.append(file.replace('.mp3', ''))
   ret.sort()
   with open(os.path.join('song_list.csv'), "w") as f:
     writer = csv.writer(f)
@@ -58,7 +58,6 @@ def input_pipeline(input_mp3, output_mid, output_csv):
         row = row.replace("\n", "")
         row = list(row.split(","))
         ret.append(row)
-      print(ret)
 
       with open(os.path.join(output_csv, str(temp) + '.csv'), "w") as f:
         writer = csv.writer(f)
@@ -66,7 +65,6 @@ def input_pipeline(input_mp3, output_mid, output_csv):
       index += 1
     except Exception:
       print(f"Some problem occurs while trying to process {target}.")
-      print(Exception)
 
 if __name__ == "__main__":
   if len(sys.argv) < 4:
